@@ -1,7 +1,7 @@
 #import library
-import warnings
 import matplotlib.pyplot as plt
 import cv2
+from sklearn import preprocessing
 from keras.models import Model
 import os
 import glob
@@ -50,9 +50,6 @@ for f1 in glob.glob(data_path+"/*.*"):
     #img=img/255
     data1.append(img)
 
-print(len(data1))
-
-print(len(label))
 
 ###split data1
 data1=data1[0:10]
@@ -61,8 +58,7 @@ d=[]
 for i in range(len(data1)):
     d.append(data1[i]/255)
 
-from sklearn import preprocessing
-
+    
 
 
 label_encoder = preprocessing.LabelEncoder()
@@ -114,9 +110,9 @@ model.load_weights('C:/Users/Downloads/vgg_weights.h5')
 
 
 #build model and feature
-vgg_face=Model(inputs=model.layers[0].input,outputs=model.layers[-2].output)
+vgg_=Model(inputs=model.layers[0].input,outputs=model.layers[-2].output)
 
-feature=vgg_face.predict(np.array(d))
+feature=vgg_.predict(np.array(d))
 
 
 #svm model

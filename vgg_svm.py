@@ -1,7 +1,5 @@
 #import library
-#from scipy import ndimage
 import warnings
-warnings.simplefilter(action='ignore', category=FutureWarning)
 import matplotlib.pyplot as plt
 import cv2
 from keras.models import Model
@@ -25,7 +23,7 @@ from PIL import Image
 ####read data and label
 
 #readdddd
-img_dir ="C:/Users/reza/Downloads/lfw/lfw"
+img_dir =""
 data_path = os.path.join(img_dir,'*')
 
 ####files
@@ -71,22 +69,8 @@ label_encoder = preprocessing.LabelEncoder()
 label=label_encoder.fit_transform(label)
 
 
-'''    
 
-la=[]
-for i in range(3):
-    la.append(0)
-
-for i in range(3):
-    la.append(1)
-
-for i in range(2):
-    la.append(2)
-
-for i in range(2):
-    la.append(1)
-'''
-#############################agaze model
+#### model
 
 
 
@@ -125,7 +109,7 @@ model.add(Activation('softmax'))
 
 ##load model
 from keras.models import model_from_json
-model.load_weights('C:/Users/reza/Downloads/vgg_face_weights.h5')
+model.load_weights('C:/Users/Downloads/vgg_weights.h5')
 
 
 
